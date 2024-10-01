@@ -9,15 +9,17 @@ Make sure to install the dependencies:
 ```bash
 # npm
 npm install
+npm install @nuxtjs/axios
+npm i --save-dev @types/node
+npm install @fortawesome/fontawesome-free
 
-# pnpm
-pnpm install
+# npm install leaflet.markercluster leaflet.heat
+npm install leaflet @types/leaflet leaflet.markercluster leaflet.heat
+npx nuxi@latest module add @vesp/nuxt-fontawesome
+npx nuxi@latest module add @nuxtjs/leafletnpm install @fortawesome/fontawesome-free
+npx nuxi@latest module add nuxt-mdi
+npx nuxi@latest module add tailwindcss
 
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -27,15 +29,6 @@ Start the development server on `http://localhost:3000`:
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -45,15 +38,6 @@ Build the application for production:
 ```bash
 # npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -61,15 +45,6 @@ Locally preview production build:
 ```bash
 # npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
