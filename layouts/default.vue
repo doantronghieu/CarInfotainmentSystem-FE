@@ -1,16 +1,13 @@
+<!-- layouts/default.vue -->
 <template>
-  <div class="min-h-screen">
-    <header class="bg-gray-800 p-4">
-      <h1 class="text-2xl font-bold">Car Infotainment System</h1>
-    </header>
-    <main class="p-4">
+  <div class="min-h-screen bg-gray-900 text-white p-4">
+    <TopBar />
+    <main class="mt-4">
       <Nuxt />
     </main>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DefaultLayout'
-}
+<script setup>
+import TopBar from '~/components/TopBar.vue'
 </script>

@@ -1,23 +1,21 @@
+components/TopBar.vue
 <template>
-  <div class="flex justify-between items-center text-sm">
+  <div class="flex justify-between items-center bg-gray-800 p-4 text-white">
     <div class="flex items-center space-x-4">
-      <button class="text-xl"><i class="fas fa-home"></i></button>
-      <div class="flex items-center space-x-2">
-        <i class="fas fa-volume-up"></i>
-        <input type="range" min="0" max="100" v-model="volume" class="w-24" />
+      <img :src="userAvatar" alt="User Avatar" class="w-12 h-12 rounded-full" />
+      <div>
+        <p class="text-xl font-bold">Hi, {{ userName }}</p>
+        <p class="text-sm text-gray-400">{{ carModel }}</p>
       </div>
     </div>
-    <div class="text-center">
-      <p>{{ currentDate }}</p>
-      <p class="text-lg font-bold">{{ currentTime }}</p>
-    </div>
     <div class="flex items-center space-x-4">
-      <button @click="toggleDayNightMode" class="text-xl">
-        <i :class="isDayMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
-      </button>
-      <button class="text-xl"><i class="fas fa-user"></i></button>
-      <button class="text-xl"><i class="fas fa-cog"></i></button>
-      <button class="text-xl"><i class="fas fa-search"></i></button>
+      <p class="text-2xl font-bold">{{ currentTime }}</p>
+      <p class="text-lg">{{ currentTemp }}°C</p>
+      <div class="flex space-x-2">
+        <i class="fas fa-battery-three-quarters text-green-500"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-signal"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -25,24 +23,19 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const volume = ref(50)
-const currentDate = ref('')
+const userAvatar = ref('/placeholder-avatar.jpg')
+const userName = ref('Razvan')
+const carModel = ref('Tesla Model 3')
 const currentTime = ref('')
-const isDayMode = ref(true)
+const currentTemp = ref(25)
 
 const updateDateTime = () => {
   const now = new Date()
-  currentDate.value = now.toLocaleDateString()
   currentTime.value = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-}
-
-const toggleDayNightMode = () => {
-  isDayMode.value = !isDayMode.value
-  // You would typically emit an event here to update the entire app's theme
 }
 
 onMounted(() => {
   updateDateTime()
-  setInterval(updateDateTime, 1000)
+  setInterval(updateDateTime, 60000)
 })
 </script>

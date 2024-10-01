@@ -16,16 +16,7 @@
       </div>
       <div>
         <p class="text-sm text-gray-400">Power Flow</p>
-        <svg viewBox="0 0 100 50" class="w-full">
-          <!-- Simplified power flow diagram -->
-          <rect x="10" y="20" width="20" height="10" fill="#48BB78"/>
-          <rect x="70" y="20" width="20" height="10" fill="#4299E1"/>
-          <line x1="30" y1="25" x2="70" y2="25" stroke="#ECC94B" stroke-width="2">
-            <animate attributeName="stroke-dashoffset" from="0" to="100" dur="2s" repeatCount="indefinite"/>
-          </line>
-          <text x="20" y="45" class="text-xs" fill="white">Battery</text>
-          <text x="80" y="45" class="text-xs" fill="white">Motor</text>
-        </svg>
+        
       </div>
     </div>
     <div class="mt-4">

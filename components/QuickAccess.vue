@@ -1,6 +1,7 @@
+<!-- components/QuickAccess.vue -->
 <template>
   <div class="bg-gray-800 p-4 rounded-lg">
-    <div class="grid grid-cols-8 gap-2">
+    <div class="grid grid-cols-4 gap-4">
       <button v-for="(item, index) in quickAccessItems" :key="index" 
               @click="item.action" 
               class="flex flex-col items-center justify-center p-2 bg-gray-700 rounded-lg hover:bg-gray-600">
@@ -22,6 +23,6 @@ const quickAccessItems = ref([
   { icon: 'fas fa-cog', label: 'Settings', action: () => console.log('Settings clicked') },
   { icon: 'fas fa-car', label: 'Vehicle', action: () => console.log('Vehicle clicked') },
   { icon: 'fas fa-user', label: 'Profile', action: () => console.log('Profile clicked') },
-  { icon: 'fas fa-plus', label: 'Add', action: () => console.log('Add clicked') },
+  { icon: 'fas fa-microphone', label: 'Voice', action: () => console.log('Voice clicked') },
 ])
 </script>
