@@ -1,33 +1,33 @@
 <template>
-  <div class="bg-gray-800 p-4 rounded-lg">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold">Navigation</h2>
-      <input v-model="searchQuery" @keyup.enter="searchLocation" placeholder="Search for a location" class="bg-gray-700 text-white p-2 rounded-md w-1/2" />
+  <div class="bg-gray-800 p-2 rounded-lg">
+    <div class="flex justify-between items-center mb-2">
+      <h2 class="text-lg font-bold">Navigation</h2>
+      <input v-model="searchQuery" placeholder="Search for a location" class="bg-gray-700 text-white p-1 rounded-md w-1/2 text-sm" />
+      <button class="text-xl"><i class="fas fa-compass"></i></button>
     </div>
-    <div class="map-container">
+    <div class="map-container relative h-64">
       <div ref="mapElement" class="map"></div>
+      <div class="absolute top-2 left-2 space-y-1">
+        <button class="bg-gray-700 p-1 rounded-full"><i class="fas fa-plus"></i></button>
+        <button class="bg-gray-700 p-1 rounded-full"><i class="fas fa-minus"></i></button>
+      </div>
     </div>
-    <div class="mt-4 grid grid-cols-3 gap-4">
+    <div class="mt-2 grid grid-cols-3 gap-2 text-sm">
       <div>
-        <p class="text-sm text-gray-400">Next Stop</p>
-        <p class="font-bold">{{ nextStop }}</p>
+        <p class="text-gray-400">Next Turn</p>
+        <p class="font-bold">{{ nextTurn }}</p>
       </div>
       <div>
-        <p class="text-sm text-gray-400">Destination</p>
-        <p class="font-bold">{{ destination }}</p>
+        <p class="text-gray-400">Distance to Turn</p>
+        <p class="font-bold">{{ distanceToTurn }}</p>
       </div>
       <div>
-        <p class="text-sm text-gray-400">Arrival Time</p>
-        <p class="font-bold">{{ arrivalTime }}</p>
+        <p class="text-gray-400">ETA</p>
+        <p class="font-bold">{{ eta }}</p>
       </div>
-      <div>
-        <p class="text-sm text-gray-400">Time Left</p>
-        <p class="font-bold">{{ timeLeft }}</p>
-      </div>
-      <div>
-        <p class="text-sm text-gray-400">Distance Left</p>
-        <p class="font-bold">{{ distanceLeft }}</p>
-      </div>
+    </div>
+    <div class="mt-2 bg-gray-700 p-1 rounded-lg text-sm">
+      <p>{{ detailedInstructions }}</p>
     </div>
   </div>
 </template>
@@ -39,6 +39,11 @@ const searchQuery = ref('');
 let map: any = null;
 let marker: any = null;
 let L: any = null;
+
+const nextTurn = ref('Turn right on Main St');
+const distanceToTurn = ref('0.5 mi');
+const eta = ref('10:30 AM');
+const detailedInstructions = ref('In 0.5 miles, turn right onto Main St, then your destination will be on the left');
 
 const nextStop = ref('Las Vegas, NV');
 const destination = ref('Denver, CO');

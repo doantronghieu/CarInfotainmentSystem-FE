@@ -1,23 +1,29 @@
 <template>
-  <div class="dashboard bg-gray-900 text-white p-4 h-screen">
-    <div class="grid grid-cols-4 gap-4">
-      <div class="col-span-3">
-        <ClientOnly>
-          <NavigationMap />
-        </ClientOnly>
+  <div class="dashboard bg-gray-900 text-white h-screen flex flex-col p-2">
+    <TopBar />
+    <div class="flex-grow grid grid-cols-12 gap-2 mt-2">
+      <div class="col-span-7">
+        <NavigationMap />
+        <Speedometer class="mt-2" />
       </div>
-      <div class="col-span-1 space-y-4">
-        <MediaPlayer />
-        <ClimateControl />
+      <div class="col-span-3">
+        <WeatherWidget />
+        <MediaPlayer class="mt-2" />
+        <ClimateControl class="mt-2" />
+      </div>
+      <div class="col-span-2">
         <VehicleInfo />
       </div>
     </div>
-    <QuickAccess class="mt-4" />
+    <QuickAccess class="mt-2" />
   </div>
 </template>
 
 <script setup>
+import TopBar from '~/components/TopBar.vue'
 import NavigationMap from '~/components/NavigationMap.vue'
+import Speedometer from '~/components/Speedometer.vue'
+import WeatherWidget from '~/components/WeatherWidget.vue'
 import MediaPlayer from '~/components/MediaPlayer.vue'
 import ClimateControl from '~/components/ClimateControl.vue'
 import VehicleInfo from '~/components/VehicleInfo.vue'
