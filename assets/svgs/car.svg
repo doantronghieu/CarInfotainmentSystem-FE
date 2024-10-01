@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200">
+  <defs>
+    <!-- Gradients and filters -->
+    <linearGradient id="body-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3a3a3a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a2a2a;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glass-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#88F;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#4a9fff;stop-opacity:0.3" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Car Body -->
+  <path d="M100,300 L200,100 H600 L700,300 V900 L600,1100 H200 L100,900 Z" 
+        fill="url(#body-gradient)" stroke="#4a9fff" stroke-width="3"/>
+
+  <!-- Windshield -->
+  <path d="M200,100 L250,150 H550 L600,100" 
+        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2"/>
+
+  <!-- Rear Window -->
+  <path d="M200,1100 L250,1050 H550 L600,1100" 
+        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2"/>
+
+  <!-- Sunroof -->
+  <rect x="300" y="400" width="200" height="300" rx="20"
+        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2" id="sunroof"/>
+
+  <!-- Hood -->
+  <path d="M200,100 L250,150 H550 L600,100 V250 H200 V100" fill="#333" stroke="#4a9fff" stroke-width="2" id="hood"/>
+  
+  <!-- Trunk -->
+  <path d="M200,1100 L250,1050 H550 L600,1100 V950 H200 V1100" fill="#333" stroke="#4a9fff" stroke-width="2" id="trunk"/>
+
+  <!-- Fuel Cap -->
+  <circle cx="650" cy="800" r="30" fill="#333" stroke="#4a9fff" stroke-width="2" id="fuel-cap"/>
+
+  <!-- Doors with open/close status -->
+  <g id="doors">
+    <rect x="100" y="300" width="50" height="270" fill="#4a9fff" id="door-fl" opacity="0.7"/>
+    <rect x="650" y="300" width="50" height="270" fill="#4a9fff" id="door-fr" opacity="0.7"/>
+    <rect x="100" y="630" width="50" height="270" fill="#4a9fff" id="door-rl" opacity="0.7"/>
+    <rect x="650" y="630" width="50" height="270" fill="#4a9fff" id="door-rr" opacity="0.7"/>
+  </g>
+
+  <!-- Seats with temperature indicators -->
+  <g id="seats">
+    <rect x="200" y="350" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-fl"/>
+    <text x="275" y="450" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-fl">22°C</text>
+    <rect x="450" y="350" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-fr"/>
+    <text x="525" y="450" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-fr">22°C</text>
+    <rect x="200" y="750" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-rl"/>
+    <text x="275" y="850" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-rl">22°C</text>
+    <rect x="450" y="750" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-rr"/>
+    <text x="525" y="850" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-rr">22°C</text>
+  </g>
+
+  <!-- Steering Wheel -->
+  <circle cx="275" cy="500" r="60" fill="none" stroke="#4a9fff" stroke-width="6"/>
+  <path d="M275,460 V480 M275,520 V540" stroke="#4a9fff" stroke-width="4"/>
+  <path d="M235,500 H255 M295,500 H315" stroke="#4a9fff" stroke-width="4"/>
+
+  <!-- Updated Dashboard Display -->
+  <g id="dashboard" transform="translate(200, 150)">
+    <rect x="0" y="0" width="400" height="200" rx="10" fill="#111" stroke="#4a9fff" stroke-width="2"/>
+    
+    <!-- Speed -->
+    <text x="50" y="35" font-family="Arial" font-size="24" fill="#4a9fff" text-anchor="end" id="speed">120</text>
+    <text x="55" y="35" font-family="Arial" font-size="16" fill="#888" text-anchor="start">km/h</text>
+    
+    <!-- Range -->
+    <text x="200" y="35" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="end" id="range">304</text>
+    <text x="205" y="35" font-family="Arial" font-size="16" fill="#888" text-anchor="start">km</text>
+    
+    <!-- Temperature -->
+    <text x="350" y="35" font-family="Arial" font-size="24" fill="#ff4a4a" text-anchor="end" id="temperature">24</text>
+    <text x="355" y="35" font-family="Arial" font-size="16" fill="#888" text-anchor="start">°C</text>
+
+    <!-- PRND Indicator -->
+    <g id="prnd" transform="translate(20, 60)">
+      <rect x="0" y="0" width="120" height="30" rx="15" fill="#222" stroke="#4a9fff" stroke-width="2"/>
+      <text x="60" y="20" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle">
+        <tspan id="prnd-p" fill="#4a9fff">P</tspan>
+        <tspan id="prnd-r"> R </tspan>
+        <tspan id="prnd-n"> N </tspan>
+        <tspan id="prnd-d"> D</tspan>
+      </text>
+    </g>
+
+    <!-- Battery Indicator -->
+    <g id="battery" transform="translate(150, 60)">
+      <rect x="0" y="0" width="120" height="30" rx="15" fill="#2a2a2a" stroke="#4a9fff" stroke-width="2"/>
+      <rect x="0" y="0" width="94" height="30" rx="15" fill="#4a9fff" id="battery-indicator">
+        <animate attributeName="width" values="0;94;94" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <text x="60" y="20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" id="battery-text">78%</text>
+    </g>
+
+    <!-- Energy Consumption Display -->
+    <g id="energy-consumption" transform="translate(280, 60)">
+      <rect x="0" y="0" width="110" height="30" rx="15" fill="#222" stroke="#4aff9f" stroke-width="2"/>
+      <text x="55" y="20" font-family="Arial" font-size="14" fill="#4aff9f" text-anchor="middle" id="energy-text">23 kWh/100km</text>
+    </g>
+
+    <!-- A/C Controls -->
+    <g id="ac-controls" transform="translate(20, 100)">
+      <circle cx="20" cy="20" r="15" fill="#4aff9f" id="ac-power"/>
+      <text x="160" y="24" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle" id="ac-mode">Face</text>
+      <rect x="70" y="10" width="60" height="15" rx="7.5" fill="#444" id="fan-level"/>
+      <rect x="70" y="10" width="20" height="15" rx="7.5" fill="#4aff9f" id="fan-level-indicator"/>
+    </g>
+
+    <!-- Driver Assistance Indicators -->
+    <g id="driver-assistance" transform="translate(20, 150)">
+      <rect x="0" y="0" width="80" height="30" rx="15" fill="#4a9fff" id="cruise-control"/>
+      <text x="40" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Cruise</text>
+      <rect x="90" y="0" width="80" height="30" rx="15" fill="#4aff9f" id="lane-assist"/>
+      <text x="130" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Lane</text>
+      <rect x="180" y="0" width="80" height="30" rx="15" fill="#ff4a4a" id="collision-warning"/>
+      <text x="220" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Collision</text>
+      <rect x="270" y="0" width="80" height="30" rx="15" fill="#ffaa4a" id="parking-assist"/>
+      <text x="310" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Park</text>
+    </g>
+  </g>
+
+  <!-- Climate Zones -->
+  <g id="climate-zones">
+    <rect x="220" y="340" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-fl"/>
+    <rect x="440" y="340" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-fr"/>
+    <rect x="220" y="740" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-rl"/>
+    <rect x="440" y="740" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-rr"/>
+  </g>
+
+  <!-- Lights with glow effect -->
+  <g id="lights" filter="url(#glow)">
+    <circle cx="150" cy="200" r="30" fill="#FF0" id="light-fl"/>
+    <circle cx="650" cy="200" r="30" fill="#FF0" id="light-fr"/>
+    <circle cx="150" cy="1000" r="30" fill="#F00" id="light-rl"/>
+    <circle cx="650" cy="1000" r="30" fill="#F00" id="light-rr"/>
+  </g>
+
+  <!-- Turn Signals -->
+  <g id="turn-signals" filter="url(#glow)">
+    <path d="M100,250 L130,220 V280 Z" fill="#FF0" id="turn-fl"/>
+    <path d="M700,250 L670,220 V280 Z" fill="#FF0" id="turn-fr"/>
+    <path d="M100,950 L130,920 V980 Z" fill="#FF0" id="turn-rl"/>
+    <path d="M700,950 L670,920 V980 Z" fill="#FF0" id="turn-rr"/>
+  </g>
+
+  <!-- Wheels with Tire Pressure -->
+  <g id="wheels">
+    <circle cx="150" cy="400" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-fl"/>
+    <text x="150" y="400" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-fl-pressure">2.4</text>
+    <circle cx="650" cy="400" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-fr"/>
+    <text x="650" y="400" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-fr-pressure">2.4</text>
+    <circle cx="150" cy="800" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-rl"/>
+    <text x="150" y="800" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-rl-pressure">2.4</text>
+    <circle cx="650" cy="800" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-rr"/>
+    <text x="650" y="800" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-rr-pressure">2.4</text>
+  </g>
+  
+  <!-- Windshield Wipers -->
+  <path d="M220,120 Q400,180 580,120" fill="none" stroke="#888" stroke-width="2" id="wiper-left"/>
+  <path d="M220,130 Q400,190 580,130" fill="none" stroke="#888" stroke-width="2" id="wiper-right"/>
+
+  <!-- Side Mirrors -->
+  <path d="M100,320 L50,340 V380 L100,400" fill="#333" stroke="#4a9fff" stroke-width="2" id="mirror-left"/>
+  <path d="M700,320 L750,340 V380 L700,400" fill="#333" stroke="#4a9fff" stroke-width="2" id="mirror-right"/>
+
+  <!-- Emergency Brake Light -->
+  <rect x="375" y="1080" width="50" height="20" rx="10" fill="#ff4a4a" id="emergency-brake"/>
+  <text x="400" y="1095" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle">BRAKE</text>
+
+  <!-- Roof Rack Attachment Points -->
+  <circle cx="250" cy="400" r="10" fill="#888" id="roof-attach-fl"/>
+  <circle cx="550" cy="400" r="10" fill="#888" id="roof-attach-fr"/>
+  <circle cx="250" cy="700" r="10" fill="#888" id="roof-attach-rl"/>
+  <circle cx="550" cy="700" r="10" fill="#888" id="roof-attach-rr"/>
+
+  <!-- Blind Spot Monitoring -->
+  <path d="M50,500 L20,550 L50,600" fill="none" stroke="#ff4a4a" stroke-width="3" id="blind-spot-left"/>
+  <path d="M750,500 L780,550 L750,600" fill="none" stroke="#ff4a4a" stroke-width="3" id="blind-spot-right"/>
+
+  <!-- Rear Cross-Traffic Alert -->
+  <path d="M100,1120 L50,1150 L100,1180" fill="none" stroke="#ff4a4a" stroke-width="3" id="cross-traffic-left"/>
+  <path d="M700,1120 L750,1150 L700,1180" fill="none" stroke="#ff4a4a" stroke-width="3" id="cross-traffic-right"/>
+
+  <!-- Adaptive Headlights Indicator -->
+  <path d="M120,170 Q150,140 180,170" fill="none" stroke="#4aff9f" stroke-width="2" id="adaptive-headlight-left"/>
+  <path d="M620,170 Q650,140 680,170" fill="none" stroke="#4aff9f" stroke-width="2" id="adaptive-headlight-right"/>
+
+</svg>
