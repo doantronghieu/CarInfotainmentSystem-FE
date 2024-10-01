@@ -12,6 +12,9 @@
       <p class="text-lg font-bold">{{ currentTime }}</p>
     </div>
     <div class="flex items-center space-x-4">
+      <button @click="toggleDayNightMode" class="text-xl">
+        <i :class="isDayMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
       <button class="text-xl"><i class="fas fa-user"></i></button>
       <button class="text-xl"><i class="fas fa-cog"></i></button>
       <button class="text-xl"><i class="fas fa-search"></i></button>
@@ -25,11 +28,17 @@ import { ref, onMounted } from 'vue'
 const volume = ref(50)
 const currentDate = ref('')
 const currentTime = ref('')
+const isDayMode = ref(true)
 
 const updateDateTime = () => {
   const now = new Date()
   currentDate.value = now.toLocaleDateString()
   currentTime.value = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+const toggleDayNightMode = () => {
+  isDayMode.value = !isDayMode.value
+  // You would typically emit an event here to update the entire app's theme
 }
 
 onMounted(() => {

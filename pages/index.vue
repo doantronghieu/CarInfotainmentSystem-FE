@@ -8,16 +8,21 @@
           <PowerUsage />
         </div>
         <NavigationMap class="mt-2" />
+        <EnergyManagement class="mt-2" />
       </div>
       <div class="col-span-4">
         <WeatherWidget />
         <MediaPlayer class="mt-2" />
         <ClimateControl class="mt-2" />
         <VehicleInfo class="mt-2" />
-        <Agenda class="mt-2" />
+        <Notifications class="mt-2" />
+        <DriverAssistance class="mt-2" />
       </div>
     </div>
     <QuickAccess class="mt-2" />
+    <VoiceCommand />
+    <ParkingAssistance v-if="showParkingAssistance" />
+    <Settings v-if="showSettings" />
   </div>
 </template>
 
@@ -26,10 +31,20 @@ import TopBar from '~/components/TopBar.vue'
 import Speedometer from '~/components/Speedometer.vue'
 import PowerUsage from '~/components/PowerUsage.vue'
 import NavigationMap from '~/components/NavigationMap.vue'
+import EnergyManagement from '~/components/EnergyManagement.vue'
 import WeatherWidget from '~/components/WeatherWidget.vue'
 import MediaPlayer from '~/components/MediaPlayer.vue'
 import ClimateControl from '~/components/ClimateControl.vue'
 import VehicleInfo from '~/components/VehicleInfo.vue'
-import Agenda from '~/components/Agenda.vue'
+import Notifications from '~/components/Notifications.vue'
+import DriverAssistance from '~/components/DriverAssistance.vue'
 import QuickAccess from '~/components/QuickAccess.vue'
+import VoiceCommand from '~/components/VoiceCommand.vue'
+import ParkingAssistance from '~/components/ParkingAssistance.vue'
+import Settings from '~/components/Settings.vue'
+
+const showParkingAssistance = ref(false)
+const showSettings = ref(false)
+
+// You can add methods here to toggle the visibility of ParkingAssistance and Settings
 </script>
