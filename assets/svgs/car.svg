@@ -1,201 +1,539 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200">
   <defs>
-    <!-- Gradients and filters -->
+    <!-- Enhanced gradients and filters -->
     <linearGradient id="body-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#3a3a3a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
     </linearGradient>
     <radialGradient id="glass-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-      <stop offset="0%" style="stop-color:#88F;stop-opacity:0.7" />
-      <stop offset="100%" style="stop-color:#4a9fff;stop-opacity:0.3" />
+      <stop offset="0%" style="stop-color:#88F;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#4a9fff;stop-opacity:0.4" />
     </radialGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+    <filter id="neon-glow">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <linearGradient id="tech-line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4a9fff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4affff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a9fff;stop-opacity:1" />
+    </linearGradient>
+    <!-- New holographic display filter -->
+    <filter id="holographic-display">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
   </defs>
 
-  <!-- Car Body -->
-  <path d="M100,300 L200,100 H600 L700,300 V900 L600,1100 H200 L100,900 Z" 
-        fill="url(#body-gradient)" stroke="#4a9fff" stroke-width="3"/>
+  <!-- Sleeker Car Body with more defined edges -->
+  <path d="M100,300 Q150,100 400,50 Q650,100 700,300 L700,900 Q650,1100 400,1150 Q150,1100 100,900 Z" 
+        fill="url(#body-gradient)" stroke="url(#tech-line-gradient)" stroke-width="3"/>
 
-  <!-- Windshield -->
-  <path d="M200,100 L250,150 H550 L600,100" 
+  <!-- Enhanced Modern Windshield with smart tint -->
+  <path d="M150,150 Q400,50 650,150" 
+        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2">
+    <animate attributeName="fill-opacity" values="0.4;0.6;0.4" dur="5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Sleek Rear Window with defroster lines -->
+  <path d="M150,1050 Q400,1150 650,1050" 
         fill="url(#glass-gradient)" stroke="#88F" stroke-width="2"/>
+  <g id="defroster-lines">
+    <path d="M200,1070 L600,1070" stroke="#FFA500" stroke-width="1" stroke-dasharray="5,5">
+      <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,1090 L600,1090" stroke="#FFA500" stroke-width="1" stroke-dasharray="5,5">
+      <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+    </path>
+    <path d="M200,1110 L600,1110" stroke="#FFA500" stroke-width="1" stroke-dasharray="5,5">
+      <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" begin="1s"/>
+    </path>
+  </g>
 
-  <!-- Rear Window -->
-  <path d="M200,1100 L250,1050 H550 L600,1100" 
-        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2"/>
+  <!-- Panoramic Sunroof with electrochromic glass -->
+  <path d="M250,200 Q400,150 550,200 Q575,400 575,600 Q400,650 225,600 Q225,400 250,200 Z" 
+        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2" id="sunroof">
+    <animate attributeName="fill-opacity" values="0.4;0.8;0.4" dur="10s" repeatCount="indefinite"/>
+  </path>
 
-  <!-- Sunroof -->
-  <rect x="300" y="400" width="200" height="300" rx="20"
-        fill="url(#glass-gradient)" stroke="#88F" stroke-width="2" id="sunroof"/>
-
-  <!-- Hood -->
-  <path d="M200,100 L250,150 H550 L600,100 V250 H200 V100" fill="#333" stroke="#4a9fff" stroke-width="2" id="hood"/>
+  <!-- Streamlined Hood with air vents -->
+  <path d="M150,150 Q400,50 650,150 V250 H150 V150" fill="#252525" stroke="url(#tech-line-gradient)" stroke-width="2" id="hood"/>
+  <g id="hood-vents">
+    <path d="M250,180 L350,180 M250,200 L350,200 M250,220 L350,220" stroke="#4affff" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M450,180 L550,180 M450,200 L550,200 M450,220 L550,220" stroke="#4affff" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </path>
+  </g>
   
-  <!-- Trunk -->
-  <path d="M200,1100 L250,1050 H550 L600,1100 V950 H200 V1100" fill="#333" stroke="#4a9fff" stroke-width="2" id="trunk"/>
-
-  <!-- Fuel Cap -->
-  <circle cx="650" cy="800" r="30" fill="#333" stroke="#4a9fff" stroke-width="2" id="fuel-cap"/>
-
-  <!-- Doors with open/close status -->
-  <g id="doors">
-    <rect x="100" y="300" width="50" height="270" fill="#4a9fff" id="door-fl" opacity="0.7"/>
-    <rect x="650" y="300" width="50" height="270" fill="#4a9fff" id="door-fr" opacity="0.7"/>
-    <rect x="100" y="630" width="50" height="270" fill="#4a9fff" id="door-rl" opacity="0.7"/>
-    <rect x="650" y="630" width="50" height="270" fill="#4a9fff" id="door-rr" opacity="0.7"/>
+  <!-- Aerodynamic Trunk with active spoiler -->
+  <path d="M150,1050 Q400,1150 650,1050 V950 H150 V1050" fill="#252525" stroke="url(#tech-line-gradient)" stroke-width="2" id="trunk"/>
+  <g id="active-spoiler">
+    <path d="M300,950 L500,950" stroke="#4affff" stroke-width="2">
+      <animate attributeName="d" values="M300,950 L500,950;M300,930 L500,930;M300,950 L500,950" dur="5s" repeatCount="indefinite"/>
+    </path>
   </g>
 
-  <!-- Seats with temperature indicators -->
+  <!-- High-Tech Fuel Cap with wireless charging indicator -->
+  <g id="fuel-cap" transform="translate(650, 800)">
+    <circle cx="0" cy="0" r="30" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#4affff" stroke-width="2">
+      <animate attributeName="r" values="15;20;15" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M-10,-10 L10,10 M-10,10 L10,-10" stroke="#4aff9f" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Smart Doors with biometric sensors -->
+  <g id="doors" filter="url(#neon-glow)">
+    <rect x="100" y="300" width="20" height="270" fill="#4a9fff" id="door-fl" opacity="0.7">
+      <animate attributeName="x" values="100;80;100" dur="0.5s" begin="click" fill="freeze"/>
+    </rect>
+    <rect x="680" y="300" width="20" height="270" fill="#4a9fff" id="door-fr" opacity="0.7">
+      <animate attributeName="x" values="680;700;680" dur="0.5s" begin="click" fill="freeze"/>
+    </rect>
+    <rect x="100" y="630" width="20" height="270" fill="#4a9fff" id="door-rl" opacity="0.7">
+      <animate attributeName="x" values="100;80;100" dur="0.5s" begin="click" fill="freeze"/>
+    </rect>
+    <rect x="680" y="630" width="20" height="270" fill="#4a9fff" id="door-rr" opacity="0.7">
+      <animate attributeName="x" values="680;700;680" dur="0.5s" begin="click" fill="freeze"/>
+    </rect>
+  </g>
+  <g id="biometric-sensors">
+    <circle cx="120" cy="435" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="680" cy="435" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+    <circle cx="120" cy="765" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    <circle cx="680" cy="765" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+  </g>
+
+  <!-- Advanced Seats with massage and ventilation indicators -->
   <g id="seats">
-    <rect x="200" y="350" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-fl"/>
-    <text x="275" y="450" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-fl">22°C</text>
-    <rect x="450" y="350" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-fr"/>
-    <text x="525" y="450" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-fr">22°C</text>
-    <rect x="200" y="750" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-rl"/>
-    <text x="275" y="850" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-rl">22°C</text>
-    <rect x="450" y="750" width="150" height="200" rx="30" fill="#555" stroke="#666" stroke-width="2" id="seat-rr"/>
-    <text x="525" y="850" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-rr">22°C</text>
+    <rect x="200" y="350" width="150" height="200" rx="30" fill="#444" stroke="url(#tech-line-gradient)" stroke-width="2" id="seat-fl"/>
+    <text x="275" y="450" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-fl" filter="url(#neon-glow)">22°C</text>
+    <rect x="450" y="350" width="150" height="200" rx="30" fill="#444" stroke="url(#tech-line-gradient)" stroke-width="2" id="seat-fr"/>
+    <text x="525" y="450" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-fr" filter="url(#neon-glow)">22°C</text>
+    <rect x="200" y="750" width="150" height="200" rx="30" fill="#444" stroke="url(#tech-line-gradient)" stroke-width="2" id="seat-rl"/>
+    <text x="275" y="850" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-rl" filter="url(#neon-glow)">22°C</text>
+    <rect x="450" y="750" width="150" height="200" rx="30" fill="#444" stroke="url(#tech-line-gradient)" stroke-width="2" id="seat-rr"/>
+    <text x="525" y="850" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="middle" id="temp-rr" filter="url(#neon-glow)">22°C</text>
+  </g>
+  
+  <g id="seat-functions">
+    <circle cx="230" cy="380" r="10" fill="#4affff">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="380" r="10" fill="#4affff">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+    <circle cx="230" cy="780" r="10" fill="#4affff">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" begin="0.75s"/>
+    </circle>
+    <circle cx="480" cy="780" r="10" fill="#4affff">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" begin="2.25s"/>
+    </circle>
   </g>
 
-  <!-- Steering Wheel -->
-  <circle cx="275" cy="500" r="60" fill="none" stroke="#4a9fff" stroke-width="6"/>
-  <path d="M275,460 V480 M275,520 V540" stroke="#4a9fff" stroke-width="4"/>
-  <path d="M235,500 H255 M295,500 H315" stroke="#4a9fff" stroke-width="4"/>
+  <!-- Futuristic Steering Wheel with haptic feedback -->
+  <g id="steering-wheel" transform="translate(275, 500)">
+    <path d="M0,-60 A60,60 0 0,1 0,60 A60,60 0 0,1 0,-60" fill="none" stroke="url(#tech-line-gradient)" stroke-width="6"/>
+    <circle cx="0" cy="0" r="30" fill="#222" stroke="url(#tech-line-gradient)" stroke-width="2"/>
+    <path d="M-10,-10 H10 M-10,10 H10" stroke="#4affff" stroke-width="2"/>
+    <circle cx="0" cy="-45" r="8" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="39" cy="22" r="8" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="0.67s"/>
+    </circle>
+    <circle cx="-39" cy="22" r="8" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1.33s"/>
+    </circle>
+  </g>
 
-  <!-- Updated Dashboard Display -->
+  <!-- High-Tech Dashboard Display -->
   <g id="dashboard" transform="translate(200, 150)">
-    <rect x="0" y="0" width="400" height="200" rx="10" fill="#111" stroke="#4a9fff" stroke-width="2"/>
+    <rect x="0" y="0" width="400" height="200" rx="20" fill="#111" stroke="url(#tech-line-gradient)" stroke-width="2"/>
     
     <!-- Speed -->
-    <text x="50" y="35" font-family="Arial" font-size="24" fill="#4a9fff" text-anchor="end" id="speed">120</text>
+    <text x="50" y="35" font-family="Arial" font-size="24" fill="#4affff" text-anchor="end" id="speed" filter="url(#neon-glow)">120</text>
     <text x="55" y="35" font-family="Arial" font-size="16" fill="#888" text-anchor="start">km/h</text>
     
     <!-- Range -->
-    <text x="200" y="35" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="end" id="range">304</text>
+    <text x="200" y="35" font-family="Arial" font-size="24" fill="#4aff9f" text-anchor="end" id="range" filter="url(#neon-glow)">304</text>
     <text x="205" y="35" font-family="Arial" font-size="16" fill="#888" text-anchor="start">km</text>
     
     <!-- Temperature -->
-    <text x="350" y="35" font-family="Arial" font-size="24" fill="#ff4a4a" text-anchor="end" id="temperature">24</text>
+    <text x="350" y="35" font-family="Arial" font-size="24" fill="#ff4a4a" text-anchor="end" id="temperature" filter="url(#neon-glow)">24</text>
     <text x="355" y="35" font-family="Arial" font-size="16" fill="#888" text-anchor="start">°C</text>
 
     <!-- PRND Indicator -->
     <g id="prnd" transform="translate(20, 60)">
-      <rect x="0" y="0" width="120" height="30" rx="15" fill="#222" stroke="#4a9fff" stroke-width="2"/>
-      <text x="60" y="20" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle">
-        <tspan id="prnd-p" fill="#4a9fff">P</tspan>
+      <rect x="0" y="0" width="120" height="30" rx="15" fill="#222" stroke="url(#tech-line-gradient)" stroke-width="2"/>
+      <text x="60" y="20" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle" filter="url(#neon-glow)">
+        <tspan id="prnd-p" fill="#4affff">P</tspan>
         <tspan id="prnd-r"> R </tspan>
         <tspan id="prnd-n"> N </tspan>
         <tspan id="prnd-d"> D</tspan>
       </text>
     </g>
 
-    <!-- Battery Indicator -->
+    <!-- Advanced Battery Indicator -->
     <g id="battery" transform="translate(150, 60)">
-      <rect x="0" y="0" width="120" height="30" rx="15" fill="#2a2a2a" stroke="#4a9fff" stroke-width="2"/>
-      <rect x="0" y="0" width="94" height="30" rx="15" fill="#4a9fff" id="battery-indicator">
+      <rect x="0" y="0" width="120" height="30" rx="15" fill="#2a2a2a" stroke="url(#tech-line-gradient)" stroke-width="2"/>
+      <rect x="0" y="0" width="94" height="30" rx="15" fill="url(#tech-line-gradient)" id="battery-indicator">
         <animate attributeName="width" values="0;94;94" dur="3s" repeatCount="indefinite" />
       </rect>
-      <text x="60" y="20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" id="battery-text">78%</text>
+      <text x="60" y="20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" id="battery-text" filter="url(#neon-glow)">78%</text>
     </g>
 
     <!-- Energy Consumption Display -->
     <g id="energy-consumption" transform="translate(280, 60)">
-      <rect x="0" y="0" width="110" height="30" rx="15" fill="#222" stroke="#4aff9f" stroke-width="2"/>
-      <text x="55" y="20" font-family="Arial" font-size="14" fill="#4aff9f" text-anchor="middle" id="energy-text">23 kWh/100km</text>
+      <rect x="0" y="0" width="110" height="30" rx="15" fill="#222" stroke="url(#tech-line-gradient)" stroke-width="2"/>
+      <text x="55" y="20" font-family="Arial" font-size="14" fill="#4aff9f" text-anchor="middle" id="energy-text" filter="url(#neon-glow)">23 kWh/100km</text>
     </g>
 
-    <!-- A/C Controls -->
+    <!-- Smart A/C Controls -->
     <g id="ac-controls" transform="translate(20, 100)">
-      <circle cx="20" cy="20" r="15" fill="#4aff9f" id="ac-power"/>
-      <text x="160" y="24" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle" id="ac-mode">Face</text>
-      <rect x="70" y="10" width="60" height="15" rx="7.5" fill="#444" id="fan-level"/>
-      <rect x="70" y="10" width="20" height="15" rx="7.5" fill="#4aff9f" id="fan-level-indicator"/>
+      <!-- A/C Power Button -->
+      <circle cx="20" cy="20" r="15" fill="#4aff9f" id="ac-power">
+        <animate attributeName="fill-opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <path d="M20,13 v14 M13,20 h14" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+      
+      <!-- Temperature Control -->
+      <rect x="50" y="5" width="80" height="30" rx="15" fill="#4affff"/>
+      <text x="90" y="26" font-family="Arial" font-size="18" fill="#1a1a1a" text-anchor="middle" id="temp-display">22°C</text>
+      <path d="M60,20 l6,-6 v12 z" fill="#1a1a1a"/>
+      <path d="M120,20 l-6,-6 v12 z" fill="#1a1a1a"/>
+      
+      <!-- Fan Speed Control -->
+      <rect x="140" y="5" width="100" height="30" rx="15" fill="#4aff9f"/>
+      <circle cx="155" cy="20" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M155,15 l5,5 l-5,5 M160,20 h70" stroke="#1a1a1a" stroke-width="2"/>
+      <circle cx="190" cy="20" r="4" fill="#1a1a1a"/>
+      <circle cx="220" cy="20" r="4" fill="#1a1a1a"/>
+      
+      <!-- Improved A/C Mode Icon -->
+      <rect x="250" y="5" width="80" height="30" rx="15" fill="#4affff"/>
+      <g transform="translate(260, 10)">
+        <!-- Car silhouette -->
+        <path d="M5,15 h50 v-5 a5,5 0 0 0 -5,-5 h-40 a5,5 0 0 0 -5,5 z" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+        <!-- Face vents -->
+        <path d="M15,10 l5,-5 M45,10 l-5,-5" stroke="#1a1a1a" stroke-width="1"/>
+        <!-- Feet vents -->
+        <path d="M20,15 v5 M40,15 v5" stroke="#1a1a1a" stroke-width="1"/>
+        <!-- Windshield -->
+        <path d="M10,5 l40,0" stroke="#1a1a1a" stroke-width="1"/>
+      </g>
     </g>
 
-    <!-- Driver Assistance Indicators -->
+    <!-- Advanced Driver Assistance Indicators -->
     <g id="driver-assistance" transform="translate(20, 150)">
-      <rect x="0" y="0" width="80" height="30" rx="15" fill="#4a9fff" id="cruise-control"/>
-      <text x="40" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Cruise</text>
+      <!-- Cruise Control Icon -->
+      <rect x="0" y="0" width="80" height="30" rx="15" fill="#4affff" id="cruise-control"/>
+      <path d="M20,15 h40 M40,5 v20" stroke="#1a1a1a" stroke-width="2"/>
+      <circle cx="40" cy="15" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+      
+      <!-- Lane Assist Icon -->
       <rect x="90" y="0" width="80" height="30" rx="15" fill="#4aff9f" id="lane-assist"/>
-      <text x="130" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Lane</text>
+      <path d="M110,5 v20 M150,5 v20" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M130,25 l-10,-10 h20 z" fill="#1a1a1a"/>
+      
+      <!-- Collision Warning Icon -->
       <rect x="180" y="0" width="80" height="30" rx="15" fill="#ff4a4a" id="collision-warning"/>
-      <text x="220" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Collision</text>
+      <path d="M220,5 l-15,20 h30 z" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+      <text x="220" y="22" font-family="Arial" font-size="16" fill="#1a1a1a" text-anchor="middle" font-weight="bold">!</text>
+      
+      <!-- Parking Assist Icon -->
       <rect x="270" y="0" width="80" height="30" rx="15" fill="#ffaa4a" id="parking-assist"/>
-      <text x="310" y="20" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Park</text>
+      <rect x="295" y="5" width="30" height="20" fill="none" stroke="#1a1a1a" stroke-width="2" rx="2"/>
+      <path d="M300,15 h5 M325,15 h5" stroke="#1a1a1a" stroke-width="2"/>
     </g>
   </g>
 
-  <!-- Climate Zones -->
-  <g id="climate-zones">
-    <rect x="220" y="340" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-fl"/>
-    <rect x="440" y="340" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-fr"/>
-    <rect x="220" y="740" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-rl"/>
-    <rect x="440" y="740" width="140" height="220" fill="none" stroke="#00F" stroke-width="2" stroke-dasharray="5,5" id="climate-rr"/>
+  <!-- High-Intensity LED Matrix Headlights -->
+  <g id="lights" filter="url(#neon-glow)">
+    <g id="headlight-left" transform="translate(120, 180)">
+      <rect x="0" y="0" width="60" height="30" rx="15" fill="#FFFF00" opacity="0.8">
+        <animate attributeName="fill-opacity" values="0.8;0.4;0.8" dur="1s" repeatCount="indefinite"/>
+      </rect>
+      <g id="matrix-left">
+        <circle cx="10" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="20" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="30" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="40" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="50" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="10" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="20" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="30" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="40" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="50" cy="20" r="3" fill="#FFFFFF"/>
+      </g>
+    </g>
+    <g id="headlight-right" transform="translate(620, 180)">
+      <rect x="0" y="0" width="60" height="30" rx="15" fill="#FFFF00" opacity="0.8">
+        <animate attributeName="fill-opacity" values="0.8;0.4;0.8" dur="1s" repeatCount="indefinite"/>
+      </rect>
+      <g id="matrix-right">
+        <circle cx="10" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="20" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="30" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="40" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="50" cy="10" r="3" fill="#FFFFFF"/>
+        <circle cx="10" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="20" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="30" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="40" cy="20" r="3" fill="#FFFFFF"/>
+        <circle cx="50" cy="20" r="3" fill="#FFFFFF"/>
+      </g>
+    </g>
+    <path d="M120,1020 Q150,1050 180,1020" fill="#FF0000" id="light-rl">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M620,1020 Q650,1050 680,1020" fill="#FF0000" id="light-rr">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+    </path>
   </g>
 
-  <!-- Lights with glow effect -->
-  <g id="lights" filter="url(#glow)">
-    <circle cx="150" cy="200" r="30" fill="#FF0" id="light-fl"/>
-    <circle cx="650" cy="200" r="30" fill="#FF0" id="light-fr"/>
-    <circle cx="150" cy="1000" r="30" fill="#F00" id="light-rl"/>
-    <circle cx="650" cy="1000" r="30" fill="#F00" id="light-rr"/>
+  <!-- Dynamic Turn Signals with sequential animation -->
+  <g id="turn-signals" filter="url(#neon-glow)">
+    <g id="turn-fl">
+      <rect x="100" y="220" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="115" y="220" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="130" y="220" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g id="turn-fr">
+      <rect x="690" y="220" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="675" y="220" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="660" y="220" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g id="turn-rl">
+      <rect x="100" y="920" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="115" y="920" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="130" y="920" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g id="turn-rr">
+      <rect x="690" y="920" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="675" y="920" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="660" y="920" width="10" height="60" fill="#FF9900">
+        <animate attributeName="fill-opacity" values="1;0;1" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+      </rect>
+    </g>
   </g>
 
-  <!-- Turn Signals -->
-  <g id="turn-signals" filter="url(#glow)">
-    <path d="M100,250 L130,220 V280 Z" fill="#FF0" id="turn-fl"/>
-    <path d="M700,250 L670,220 V280 Z" fill="#FF0" id="turn-fr"/>
-    <path d="M100,950 L130,920 V980 Z" fill="#FF0" id="turn-rl"/>
-    <path d="M700,950 L670,920 V980 Z" fill="#FF0" id="turn-rr"/>
-  </g>
-
-  <!-- Wheels with Tire Pressure -->
+  <!-- Smart Wheels with Tire Pressure Monitoring and active suspension -->
   <g id="wheels">
-    <circle cx="150" cy="400" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-fl"/>
-    <text x="150" y="400" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-fl-pressure">2.4</text>
-    <circle cx="650" cy="400" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-fr"/>
-    <text x="650" y="400" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-fr-pressure">2.4</text>
-    <circle cx="150" cy="800" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-rl"/>
-    <text x="150" y="800" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-rl-pressure">2.4</text>
-    <circle cx="650" cy="800" r="80" fill="#333" stroke="#4a9fff" stroke-width="3" id="wheel-rr"/>
-    <text x="650" y="800" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="central" id="tire-rr-pressure">2.4</text>
+    <g id="wheel-fl" transform="translate(150, 400)">
+      <circle cx="0" cy="0" r="80" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="3"/>
+      <circle cx="0" cy="0" r="70" fill="none" stroke="#4affff" stroke-width="2" stroke-dasharray="10 5">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Tire Pressure Display -->
+      <text x="0" y="-20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" dominant-baseline="central">FL</text>
+      <text x="0" y="10" font-family="Arial" font-size="24" fill="#4affff" text-anchor="middle" dominant-baseline="central" filter="url(#neon-glow)">2.4</text>
+      <text x="0" y="35" font-family="Arial" font-size="14" fill="white" text-anchor="middle" dominant-baseline="central">BAR</text>
+      <!-- Active Suspension Indicator -->
+      <rect x="-30" y="-90" width="60" height="10" fill="#4aff9f" rx="5">
+        <animate attributeName="height" values="10;15;10" dur="2s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <g id="wheel-fr" transform="translate(650, 400)">
+      <circle cx="0" cy="0" r="80" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="3"/>
+      <circle cx="0" cy="0" r="70" fill="none" stroke="#4affff" stroke-width="2" stroke-dasharray="10 5">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Tire Pressure Display -->
+      <text x="0" y="-20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" dominant-baseline="central">FR</text>
+      <text x="0" y="10" font-family="Arial" font-size="24" fill="#4affff" text-anchor="middle" dominant-baseline="central" filter="url(#neon-glow)">2.4</text>
+      <text x="0" y="35" font-family="Arial" font-size="14" fill="white" text-anchor="middle" dominant-baseline="central">BAR</text>
+      <!-- Active Suspension Indicator -->
+      <rect x="-30" y="-90" width="60" height="10" fill="#4aff9f" rx="5">
+        <animate attributeName="height" values="10;15;10" dur="2s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <g id="wheel-rl" transform="translate(150, 800)">
+      <circle cx="0" cy="0" r="80" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="3"/>
+      <circle cx="0" cy="0" r="70" fill="none" stroke="#4affff" stroke-width="2" stroke-dasharray="10 5">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Tire Pressure Display -->
+      <text x="0" y="-20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" dominant-baseline="central">RL</text>
+      <text x="0" y="10" font-family="Arial" font-size="24" fill="#4affff" text-anchor="middle" dominant-baseline="central" filter="url(#neon-glow)">2.4</text>
+      <text x="0" y="35" font-family="Arial" font-size="14" fill="white" text-anchor="middle" dominant-baseline="central">BAR</text>
+      <!-- Active Suspension Indicator -->
+      <rect x="-30" y="80" width="60" height="10" fill="#4aff9f" rx="5">
+        <animate attributeName="height" values="10;15;10" dur="2s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <g id="wheel-rr" transform="translate(650, 800)">
+      <circle cx="0" cy="0" r="80" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="3"/>
+      <circle cx="0" cy="0" r="70" fill="none" stroke="#4affff" stroke-width="2" stroke-dasharray="10 5">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Tire Pressure Display -->
+      <text x="0" y="-20" font-family="Arial" font-size="18" fill="white" text-anchor="middle" dominant-baseline="central">RR</text>
+      <text x="0" y="10" font-family="Arial" font-size="24" fill="#4affff" text-anchor="middle" dominant-baseline="central" filter="url(#neon-glow)">2.4</text>
+      <text x="0" y="35" font-family="Arial" font-size="14" fill="white" text-anchor="middle" dominant-baseline="central">BAR</text>
+      <!-- Active Suspension Indicator -->
+      <rect x="-30" y="80" width="60" height="10" fill="#4aff9f" rx="5">
+        <animate attributeName="height" values="10;15;10" dur="2s" repeatCount="indefinite"/>
+      </rect>
+    </g>
   </g>
   
-  <!-- Windshield Wipers -->
-  <path d="M220,120 Q400,180 580,120" fill="none" stroke="#888" stroke-width="2" id="wiper-left"/>
-  <path d="M220,130 Q400,190 580,130" fill="none" stroke="#888" stroke-width="2" id="wiper-right"/>
+  <!-- Advanced Windshield Wipers with rain sensor -->
+  <g id="wipers" filter="url(#neon-glow)">
+    <path d="M220,120 Q400,180 580,120" fill="none" stroke="#888" stroke-width="2" id="wiper-left">
+      <animate attributeName="d" values="M220,120 Q400,180 580,120;M220,140 Q400,200 580,140;M220,120 Q400,180 580,120" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M220,130 Q400,190 580,130" fill="none" stroke="#888" stroke-width="2" id="wiper-right">
+      <animate attributeName="d" values="M220,130 Q400,190 580,130;M220,150 Q400,210 580,150;M220,130 Q400,190 580,130" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="400" cy="100" r="10" fill="#4affff" opacity="0.7">
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
 
-  <!-- Side Mirrors -->
-  <path d="M100,320 L50,340 V380 L100,400" fill="#333" stroke="#4a9fff" stroke-width="2" id="mirror-left"/>
-  <path d="M700,320 L750,340 V380 L700,400" fill="#333" stroke="#4a9fff" stroke-width="2" id="mirror-right"/>
+  <!-- Aerodynamic Side Mirrors with blind spot indicators -->
+  <g id="mirrors">
+    <path d="M100,320 Q50,360 100,400" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="2" id="mirror-left"/>
+    <circle cx="70" cy="360" r="10" fill="#ff4a4a" opacity="0.7" id="blind-spot-left">
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M700,320 Q750,360 700,400" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="2" id="mirror-right"/>
+    <circle cx="730" cy="360" r="10" fill="#ff4a4a" opacity="0.7" id="blind-spot-right">
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
 
-  <!-- Emergency Brake Light -->
-  <rect x="375" y="1080" width="50" height="20" rx="10" fill="#ff4a4a" id="emergency-brake"/>
-  <text x="400" y="1095" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle">BRAKE</text>
+  <!-- High-Visibility Emergency Brake Light -->
+  <g id="emergency-brake" transform="translate(375, 1080)">
+    <rect x="0" y="0" width="50" height="20" rx="10" fill="#ff4a4a">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="0.5s" repeatCount="indefinite"/>
+    </rect>
+    <text x="25" y="15" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" filter="url(#neon-glow)">BRAKE</text>
+  </g>
 
-  <!-- Roof Rack Attachment Points -->
-  <circle cx="250" cy="400" r="10" fill="#888" id="roof-attach-fl"/>
-  <circle cx="550" cy="400" r="10" fill="#888" id="roof-attach-fr"/>
-  <circle cx="250" cy="700" r="10" fill="#888" id="roof-attach-rl"/>
-  <circle cx="550" cy="700" r="10" fill="#888" id="roof-attach-rr"/>
+  <!-- Integrated Roof Rack Attachment Points with status indicators -->
+  <g id="roof-attachments" filter="url(#neon-glow)">
+    <circle cx="250" cy="100" r="10" fill="#888" id="roof-attach-fl"/>
+    <circle cx="250" cy="100" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="100" r="10" fill="#888" id="roof-attach-fr"/>
+    <circle cx="550" cy="100" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="1100" r="10" fill="#888" id="roof-attach-rl"/>
+    <circle cx="250" cy="1100" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="1100" r="10" fill="#888" id="roof-attach-rr"/>
+    <circle cx="550" cy="1100" r="5" fill="#4aff9f">
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
 
-  <!-- Blind Spot Monitoring -->
-  <path d="M50,500 L20,550 L50,600" fill="none" stroke="#ff4a4a" stroke-width="3" id="blind-spot-left"/>
-  <path d="M750,500 L780,550 L750,600" fill="none" stroke="#ff4a4a" stroke-width="3" id="blind-spot-right"/>
+  <!-- Advanced Blind Spot Monitoring with radar waves -->
+  <g id="blind-spot-monitoring" filter="url(#neon-glow)">
+    <path d="M50,500 L20,550 L50,600" fill="none" stroke="#ff4a4a" stroke-width="3" id="blind-spot-left">
+      <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M750,500 L780,550 L750,600" fill="none" stroke="#ff4a4a" stroke-width="3" id="blind-spot-right">
+      <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M30,550 Q50,550 70,550" fill="none" stroke="#4affff" stroke-width="1" opacity="0.7">
+      <animate attributeName="d" values="M30,550 Q50,550 70,550;M20,550 Q50,540 80,550;M30,550 Q50,550 70,550" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M730,550 Q750,550 770,550" fill="none" stroke="#4affff" stroke-width="1" opacity="0.7">
+      <animate attributeName="d" values="M730,550 Q750,550 770,550;M720,550 Q750,540 780,550;M730,550 Q750,550 770,550" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
 
-  <!-- Rear Cross-Traffic Alert -->
-  <path d="M100,1120 L50,1150 L100,1180" fill="none" stroke="#ff4a4a" stroke-width="3" id="cross-traffic-left"/>
-  <path d="M700,1120 L750,1150 L700,1180" fill="none" stroke="#ff4a4a" stroke-width="3" id="cross-traffic-right"/>
+  <!-- Intelligent Rear Cross-Traffic Alert with detection zones -->
+  <g id="cross-traffic-alert" filter="url(#neon-glow)">
+    <path d="M100,1120 L50,1150 L100,1180" fill="none" stroke="#ff4a4a" stroke-width="3" id="cross-traffic-left">
+      <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M700,1120 L750,1150 L700,1180" fill="none" stroke="#ff4a4a" stroke-width="3" id="cross-traffic-right">
+      <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0,1150 Q50,1150 100,1150" fill="none" stroke="#4affff" stroke-width="1" opacity="0.5">
+      <animate attributeName="d" values="M0,1150 Q50,1150 100,1150;M0,1150 Q50,1100 100,1150;M0,1150 Q50,1150 100,1150" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M700,1150 Q750,1150 800,1150" fill="none" stroke="#4affff" stroke-width="1" opacity="0.5">
+      <animate attributeName="d" values="M700,1150 Q750,1150 800,1150;M700,1150 Q750,1100 800,1150;M700,1150 Q750,1150 800,1150" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
 
-  <!-- Adaptive Headlights Indicator -->
-  <path d="M120,170 Q150,140 180,170" fill="none" stroke="#4aff9f" stroke-width="2" id="adaptive-headlight-left"/>
-  <path d="M620,170 Q650,140 680,170" fill="none" stroke="#4aff9f" stroke-width="2" id="adaptive-headlight-right"/>
+  <!-- Smart Adaptive Headlights Indicator -->
+  <g id="adaptive-headlights" filter="url(#neon-glow)">
+    <path d="M120,170 Q150,140 180,170" fill="none" stroke="#4aff9f" stroke-width="2" id="adaptive-headlight-left">
+      <animate attributeName="d" values="M120,170 Q150,140 180,170;M120,170 Q150,160 180,170;M120,170 Q150,140 180,170" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M620,170 Q650,140 680,170" fill="none" stroke="#4aff9f" stroke-width="2" id="adaptive-headlight-right">
+      <animate attributeName="d" values="M620,170 Q650,140 680,170;M620,170 Q650,160 680,170;M620,170 Q650,140 680,170" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Electric Charging Port with status indicator -->
+  <g id="charging-port" transform="translate(680, 500)">
+    <circle cx="0" cy="0" r="20" fill="#333" stroke="url(#tech-line-gradient)" stroke-width="2"/>
+    <path d="M-10,-10 L10,10 M-10,10 L10,-10" stroke="#4aff9f" stroke-width="2"/>
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#4affff" stroke-width="2">
+      <animate attributeName="r" values="15;18;15" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Advanced Driver-Assistance Systems (ADAS) Sensors -->
+  <g id="adas-sensors">
+    <circle cx="400" cy="50" r="15" fill="#4affff" opacity="0.7">
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="1150" r="15" fill="#4affff" opacity="0.7">
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="390" y="140" width="20" height="40" rx="10" fill="#4affff" opacity="0.7">
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
 
 </svg>

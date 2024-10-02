@@ -15,8 +15,7 @@ Let's thoroughly review all the details to ensure we don't overlook anything. Pl
 ```
 
 ```text
-Please help me make the car SVG more attractive, imparting a high-tech, modern feel.
-Remember to maintain the top-down view and include as much detail as our current car SVG.
+Please assist in enhancing the car SVG to make it more visually appealing, imparting a high-tech and modern feel. Ensure that the top-down view is maintained and include as much detail as our current car SVG. Additionally, please review our car SVG to check if any important parts or functionalities have been omitted. Provide me with your plan first.
 ```
 
 ```text
@@ -36,5 +35,6 @@ Remember to maintain the top-down view and include as much detail as our current
 ```
 
 ```text
+
 
 ```
